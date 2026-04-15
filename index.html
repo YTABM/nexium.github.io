@@ -51,7 +51,7 @@
     display: flex; align-items: center; gap: 14px;
   }
   .nav-logo img {
-    height: 44px; width: auto;
+    height: 100px; width: auto;
     filter: brightness(1.1);
   }
   .nav-brand {
@@ -257,7 +257,7 @@
     color: rgba(255,255,255,0.5);
   }
   #video-embed { display: none; width: 100%; }
-  #video-embed iframe { width: 100%; aspect-ratio: 16/9; border: none; }
+  #video-embed video { width: 100%; aspect-ratio: 16/9; border: none; }
 
   /* STATS BAR */
   .stats-bar {
@@ -763,7 +763,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#accueil" class="nav-logo" style="text-decoration:none;">
     <img src="Nexium_Logo-removebg-preview.png" alt="Nexium Logo">
@@ -780,7 +779,6 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <section id="accueil">
   <div class="hero-bg-lines"></div>
   <div class="hero-ornament"></div>
@@ -797,7 +795,6 @@
   </div>
 </section>
 
-<!-- VIDEO -->
 <div class="video-section">
   <div class="video-container">
     <div class="video-placeholder" id="videoPlaceholder" onclick="loadVideo()">
@@ -813,7 +810,6 @@
   </div>
 </div>
 
-<!-- STATS -->
 <div class="stats-bar">
   <div class="stat-item">
     <span class="stat-num">15+</span>
@@ -833,7 +829,6 @@
   </div>
 </div>
 
-<!-- EXPERTISE -->
 <section id="expertise">
   <div class="expertise-layout">
     <div class="expertise-intro">
@@ -912,7 +907,6 @@
   </div>
 </section>
 
-<!-- EQUIPE -->
 <section id="equipe">
   <div style="max-width:1200px;margin:0 auto;">
     <span class="section-eyebrow" style="text-align:center;display:block;">L'office</span>
@@ -923,14 +917,7 @@
       <div class="team-photo-placeholder" id="teamPhotoWrapper">
         <div class="team-corner tl"></div>
         <div class="team-corner br"></div>
-        <img id="teamPhoto" src="" alt="L'équipe Nexium">
-        <div class="placeholder-text" id="teamPlaceholderText">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-            <circle cx="20" cy="14" r="7" stroke="rgba(184,150,62,0.4)" stroke-width="1"/>
-            <path d="M6 36C6 28.268 12.268 22 20 22C27.732 22 34 28.268 34 36" stroke="rgba(184,150,62,0.4)" stroke-width="1"/>
-          </svg>
-          <p>Photo de l'équipe<br>à venir</p>
-        </div>
+        <img id="teamPhoto" src="equipe.png" alt="L'équipe Nexium" style="display: block;">
       </div>
     </div>
 
@@ -971,7 +958,6 @@
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div style="max-width:1100px;margin:0 auto;">
     <span class="section-eyebrow">Nous écrire</span>
@@ -1059,7 +1045,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-layout">
     <div class="footer-brand">
@@ -1101,14 +1086,13 @@
 function loadVideo() {
   const ph = document.getElementById('videoPlaceholder');
   const ve = document.getElementById('video-embed');
-  const videoUrl = '';
-  if (videoUrl) {
-    ph.style.display = 'none';
-    ve.style.display = 'block';
-    ve.innerHTML = '<iframe src="' + videoUrl + '" allow="autoplay; fullscreen"></iframe>';
-  } else {
-    ph.querySelector('p').textContent = 'Vidéo bientôt disponible';
-  }
+  
+  // Masque le placeholder et affiche le conteneur de vidéo
+  ph.style.display = 'none';
+  ve.style.display = 'block';
+  
+  // Ajoute la balise vidéo locale
+  ve.innerHTML = '<video src="avocatd.mp4" controls autoplay style="width: 100%; aspect-ratio: 16/9; outline: none;"></video>';
 }
 
 function submitForm() {
